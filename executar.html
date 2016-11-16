@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Author" content="Ana Paula dos Santos / Bruna / Vinicius">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CRUD DIW</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  
+
+  <script> // Mostrar os departamentos em forma de tabela
+		var xmlhttp = new XMLHttpRequest();
+		function processarRequisicao() { //Função para processar a requisição
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				var a = JSON.parse (xmlhttp.responseText);
+				var str = "";
+				var num = a.restify.rows.length;
+				for (j = 0; j < num; j++) {
+           str =  str + "<tr id='linhatabela'>"+ "<td class='numerodpt'>" + a.restify.rows[j].values.dept_no.value + "</td>" +
+           "<td class='namedpt'>" + a.restify.rows[j].values.dept_name.value + "</td>"+ "</tr>";
+         }
+				document.getElementById("secao").innerHTML = '<div class="container">'+ '<div class="table-responsive">'+
+				'<table class="table table-bordered>' + '<thead>'+ '<tr>'+ '<th>' +'Número Dpto' + '</th>'+ '<th>' + 'Nome Dpto'+ '</th>'+ str + '</tr>'+'</table>'+ '</div>' + '</div>' ;
+			   }
+    }
+		function ExecutaAjax() { //Função para Executar o Ajax
+			xmlhttp.onreadystatechange = processarRequisicao;
+			xmlhttp.open("GET", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
+			xmlhttp.send();
+    }
+	</script>
+</head>
+<body>
+  <h3> Aperte o botão para mostrar a tabela: </h3>
+  <input type="button" value="Mostrar" onclick="ExecutaAjax()"> <br/> <br/>
+  <p id="secao"> </p>
+</body>
+</html>

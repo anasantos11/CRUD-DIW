@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<script>
+		function loadXMLDoc() {
+			var xmlhttp = new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4){ //&& xmlhttp.status==200) {               
+					document.getElementById("secao1").innerHTML = xmlhttp.responseText;
+				}
+			}
+            xmlhttp.open("POST", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
+			xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');            
+			xmlhttp.send('_data={"id": ,"matricula": "111111", "nome":"Ana", "tipo": "Aluno", "email": "a@teste.com.br", "senha":"1234"}');
+		}
+		function deleteXMLDoc() {
+			var xmlhttp = new XMLHttpRequest();
+			
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4){ //&& xmlhttp.status==200) {               
+					document.getElementById("secao2").innerHTML = xmlhttp.responseText;
+				}
+			}
+            xmlhttp.open("POST", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
+			xmlhttp.send('_data={"id": "0", "matricula": "111111", "nome":"Ana", "tipo": "Aluno", "email": "a@teste.com.br", "senha":"1234"}');
+		}
+	</script></head>
+	<body>
+		<p id="secao1"><h2>Clique no botão para incluir o registro</h2></p>
+		<button type="button" onclick="loadXMLDoc()">Incluir</button>
+		<p id="secao2"><h2>Clique no botão para excluir o registro</h2></p>
+		<button type="button" onclick="loadXMLDoc()">Excluir</button>
+	</body>
+</html>

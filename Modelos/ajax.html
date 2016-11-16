@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <script>
+		var xmlhttp = new XMLHttpRequest();
+		
+		function processarRequisicao() {
+			if (xmlhttp.readyState==4) {// && xmlhttp.status==200) {
+				var a = JSON.parse (xmlhttp.responseText);
+				var str = "";
+				var num = a.restify.rows.length;
+				for (j = 0; j < num; j++) {
+					str = str + a.restify.rows[j].values.dept_name.value + "<br>";
+				}
+				document.getElementById("secao").innerHTML = str;
+			}
+		}
+		
+		function ExecutaAjax() {			
+			xmlhttp.onreadystatechange = processarRequisicao;
+			xmlhttp.open("GET", "http://www.smartsoft.com.br/webservice/restifydb/Employees/departments/?_view=json&_expand=yes", true);
+			xmlhttp.send();
+		}
+	</script>
+</head>
+<body>
+	<div id="secao"><h2>Conteudo a ser alterado</h2></div>
+	<button type="button" onclick="ExecutaAjax()">Alterar</button>
+</body></html>
