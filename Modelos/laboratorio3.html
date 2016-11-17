@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Tabela de departamentos </title>
+  <meta charset="utf-8">
+  <meta name="Author" content="Ana Paula dos Santos, matrícula 572456.">
+
+  <script> // Mostrar os departamentos em forma de tabela
+		var xmlhttp = new XMLHttpRequest();
+		function processarRequisicao() { //Função para processar a requisição
+			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+				var a = JSON.parse (xmlhttp.responseText);
+				var str = "";
+				var num = a.restify.rows.length;
+				for (j = 0; j < num; j++) {
+           str =  str +
+           a.restify.rows[j].values.id.value + " " + a.restify.rows[j].values.matricula.value + " " +
+           a.restify.rows[j].values.nome.value + " "+ a.restify.rows[j].values.tipo.value + " " +
+           a.restify.rows[j].values.email.value + " "+ a.restify.rows[j].values.senha.value + "<br>";
+         }
+				document.getElementById("tabela").innerHTML =  'ID '+ 'Matrícula ' + 'Nome '+ 'Tipo ' +
+        'E-mail  ' + 'Senha ' + "<br>" + str ;
+			   }
+    }
+		function ExecutaAjax() { //Função para Executar o Ajax
+			xmlhttp.onreadystatechange = processarRequisicao;
+			xmlhttp.open("GET", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
+			xmlhttp.send();
+    }
+	</script>
+</head>
+<body>
+  <h3> Aperte o botão para mostrar a tabela: </h3>
+  <input type="button" value="Mostrar" onclick="ExecutaAjax()"> <br/> <br/>
+  <p id="tabela"> </p>
+</body>
+</html>

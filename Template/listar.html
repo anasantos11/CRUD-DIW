@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CRUD DIW">
+    <meta name="Author" content="Ana Paula dos Santos / Bruna / Vinicius">
+    <meta http-equiv="Content-Language" content="pt-br, en">
+    <title>CRUD DIW</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/shop-item.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Executar Ajax para demonstrar tabela -->
+    <script> // Mostrar os departamentos em forma de tabela
+      var xmlhttp = new XMLHttpRequest();
+      function processarRequisicao() { //Função para processar a requisição
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+          var a = JSON.parse (xmlhttp.responseText);
+          var str = "";
+          var num = a.restify.rows.length;
+          for (j = 0; j < num; j++) {
+            str =  str + "<thead> <tr>" + "<td>" + a.restify.rows[j].values.id.value + "</td>" +
+                 "<td>" + a.restify.rows[j].values.matricula.value + "</td>" +
+                 "<td>" + a.restify.rows[j].values.nome.value + "</td>"+
+                 "<td>" + a.restify.rows[j].values.tipo.value + "</td>" +
+                 "<td>" + a.restify.rows[j].values.email.value + "</td>"+
+                 "<td>" + a.restify.rows[j].values.senha.value + "</td>" +
+                
+
+                 "</tr> </thead>";
+          }
+         document.getElementById("tabela").innerHTML = "<table class='table table-hover'> <thead> <tr>" +
+         "<th>ID</th>" + "<th>Matrícula</th>" +"<th>Nome</th>" +"<th>Tipo de usuário</th>" +"<th>E-mail</th>" + "<th>Senha</th>" +
+         str + "</tr> </thead> </table>" ;
+           }
+      }
+      window.onload = function ExecutaAjax() { //Função para Executar o Ajax
+        xmlhttp.onreadystatechange = processarRequisicao;
+        xmlhttp.open("GET", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
+        xmlhttp.send();
+      }
+    </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <p class="navbar-brand">CADASTRO DE USUÁRIOS</p>
+      </div>
+    </div>
+    <!-- Fim Container Navigation -->
+  </nav>
+
+  <!-- Container Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- DIV CONTAINER PARA MENU COM AS OPÇÕES -->
+      <div class="col-md-3">
+        <p class="lead">Escolha uma das opções abaixo: </p>
+        <div class="list-group">
+          <a href="index.html" class="list-group-item">Página principal</a>
+          <a href="listar.html" onLoad="return ExecutaAjax();" class="list-group-item active">Listar dados</a>
+          <a href="inserir.html" class="list-group-item">Inserir dados</a>
+        </div>
+      </div>
+      <!-- DIV CONTAINER CORPO DA PÁGINA DA OPÇÃO SELECIONADA  -->
+      <div class="col-md-9">
+        <div class="thumbnail">
+
+          <div class="caption-full">
+            <h3 class="lead">Tabela com os usuários cadastrados até o presente momento: </h3>
+          </div>
+          <hr>
+          <div class="caption-full">
+            <p id='tabela'></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fim Container Page Content -->
+
+  <!-- Container Footer -->
+  <div class="container">
+    <hr>
+    <footer>
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright &copy; by Equipe Engesoft 2016 - CRUD-DIW</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <!-- Fim container Footer -->
+
+</body>
+</html>
