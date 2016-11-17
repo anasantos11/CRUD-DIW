@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
   <script>
 		var xmlhttp = new XMLHttpRequest();
-		
+
 		function processarRequisicao() {
 			if (xmlhttp.readyState==4) {// && xmlhttp.status==200) {
 				var a = JSON.parse (xmlhttp.responseText);
@@ -16,10 +16,10 @@
 				document.getElementById("secao").innerHTML = str;
 			}
 		}
-		
-		function ExecutaAjax() {			
+
+		function ExecutaAjax() {
 			xmlhttp.onreadystatechange = processarRequisicao;
-			xmlhttp.open("GET", "http://www.smartsoft.com.br/webservice/restifydb/Employees/departments/?_view=json&_expand=yes", true);
+			xmlhttp.open("GET", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
 			xmlhttp.send();
 		}
 	</script>
