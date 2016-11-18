@@ -7,14 +7,15 @@
       var str = "";
       var num = a.restify.rows.length;
       for (j = 0; j < num; j++) {
-        str =  str + "<thead> <tr>" + "<td>" + a.restify.rows[j].values.id.value + "</td>" +
+        var id = a.restify.rows[j].values.id.value;
+        str =  str + "<thead> <tr>" + "<td>" + id + "</td>" +
              "<td>" + a.restify.rows[j].values.matricula.value + "</td>" +
              "<td>" + a.restify.rows[j].values.nome.value + "</td>"+
              "<td>" + a.restify.rows[j].values.tipo.value + "</td>" +
              "<td>" + a.restify.rows[j].values.email.value + "</td>"+
              "<td>" + a.restify.rows[j].values.senha.value + "</td>" +
              "<td>" + "<button type='button' class='btn btn-success'>Alterar</button>" +
-                      "<button type='button' class='btn btn-danger'>Excluir</button>" +
+                      "<button type='button' class='btn btn-danger delete' onclick='deleteXMLDoc("+id+")' id='"+id+"'>Excluir</button>" +
                       "</td>" + "</tr> </thead>";
       }
      document.getElementById("tabela").innerHTML = "<table class='table table-hover'> <thead> <tr>" +

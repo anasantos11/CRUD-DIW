@@ -6,9 +6,15 @@ function loadXMLDoc() {
 	var senha = document.getElementById('senha').value;
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function() {
-		if (xmlhttp.readyState==4){ //&& xmlhttp.status==200) {
-			document.getElementById("secao1").innerHTML = xmlhttp.responseText;
-		}
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			window.alert("Os dados foram inclusos com sucesso.");
+			window.location.reload();
+			}
+		if (xmlhttp.readyState==4 && xmlhttp.status>=400) {
+			window.alert("Ocorreu algum erro. Atualize a página e tente novamente.");
+			window.location.reload();
+			}
+
 	}
   xmlhttp.open("POST", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
 	xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
