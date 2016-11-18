@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script>
+
+			function loadXMLDoc() {
+				var matricula = document.getElementById('matricula').value;
+				var nome = document.getElementById('nome').value;
+				var tipousuario = document.getElementById('tipousuario').value;
+				var email = document.getElementById('email').value;
+				var senha = document.getElementById('senha').value;
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.onreadystatechange=function() {
+					if (xmlhttp.readyState==4){ //&& xmlhttp.status==200) {
+						document.getElementById("secao1").innerHTML = xmlhttp.responseText;
+					}
+				}
+	      xmlhttp.open("POST", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
+				xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				xmlhttp.send('_data={"matricula": "'+ matricula +'", "nome": "'+nome+'", "tipo": "'+tipousuario+'", "email": "'+email+'", "senha":"'+senha+'"}');
+			}
+		</script>
+	</head>
+	<body>
+		<p id="secao1"><h2>Clique no botão para incluir o registro</h2></p>
+		<!-- Formulario -->
+		<div class="caption-full">
+			<form>
+					<label for="inputMatricula">Matrícula</label>
+					<input type="number" id="matricula" placeholder="Matrícula"> <br> <br>
+					<label for="inputName">Nome</label>
+					<input type="text" id="nome" placeholder="Nome"> <br> <br>
+					<label for="inputName">Tipo de usuário</label>
+					<!--<input type="text" id="tipousuario" placeholder='Digite "Aluno" ou "Professor". '> <br> <br> -->
+					<select id="tipousuario">
+							<option selected="">Selecione o tipo de usuário</option>
+							<option id="aluno">Aluno</option>
+							<option id="professor" >Professor</option>
+					</select> <br> <br>
+					<label for="inputEmail3">Email</label>
+					<input type="email" id="email" placeholder="Email"> <br> <br>
+					<label for="inputPassword3">Password</label>
+					<input type="password" id="senha" placeholder="Password"> <br> <br>
+					<button type="button" onclick="loadXMLDoc()">Incluir</button>
+		</form>
+
+	</body>
+</html>

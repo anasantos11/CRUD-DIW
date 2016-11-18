@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<script>
+		function deleteXMLDoc() {
+			var a = document.getElementById('x').value;
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4){ //&& xmlhttp.status==200) {
+					document.getElementById("secao2").innerHTML = xmlhttp.responseText;
+				}
+			}
+      xmlhttp.open("DELETE", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario/"+a, true);
+			xmlhttp.send();
+		}
+	</script>
+</head>
+	<body>
+
+		<p id="secao2"><h2>Digite o ID e pressione enviar para excluir o registro</h2></p>
+		<form class="form-horizontal">
+				<label for="inputid" class="col-sm-2 control-label">ID</label>
+				<input type="text" id="x"  placeholder="ID">
+				<button type="button" onclick="deleteXMLDoc()">Excluir</button>
+
+		</form>
+
+
+	</body>
+</html>

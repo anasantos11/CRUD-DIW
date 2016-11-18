@@ -22,6 +22,9 @@
     <script src="js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/insert.js"></script>
+    <script src="js/delete.js"></script>
+    <script src="js/list.js"></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -29,7 +32,7 @@
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <p class="navbar-brand">CADASTRO DE USUÁRIOS</p>
+        <a href="index.html" class="navbar-brand">HOME - Cadastro de usuários</a>
       </div>
     </div>
     <!-- Fim Container Navigation -->
@@ -39,39 +42,64 @@
   <div class="container">
     <div class="row">
       <!-- DIV CONTAINER PARA MENU COM AS OPÇÕES  -->
-      <div class="col-md-3">
-        <p class="lead">Escolha uma das opções abaixo: </p>
+      <div class="col-md-12">
         <div class="list-group">
-          <a href="index.html" class="list-group-item">Página principal</a>
-          <a href="listar.html" class="list-group-item">Listar dados</a>
-          <a href="inserir.html" class="list-group-item active">Inserir dados</a>
+          <a href="listar.html" onLoad="return ExecutaAjax();" class="list-group-item text-center col-md-6">Listar dados</a>
+          <a href="inserir.html" class="list-group-item text-center active col-md-6">Inserir dados</a>
         </div>
       </div>
       <!-- DIV CONTAINER CORPO DA PÁGINA DA OPÇÃO SELECIONADA  -->
-      <div class="col-md-9">
+      <div class="col-md-12">
+        <h4 class="text-center"> <br> Preencha os campos abaixo e clique em enviar para inserir novos dados na tabela: <br><br> </h4>
         <div class="thumbnail">
+          <!-- Formulario -->
           <div class="caption-full">
-            <p> Preencha os campos abaix e clique em enviar para inserir novos dados na tabela: </p>
-            <p>Mostrará campos para prencher.</p>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="inputMatricula" class="col-sm-2 control-label">Matrícula</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Matrícula" id="matricula">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">Nome</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" placeholder="Nome" id="nome">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">Tipo de usuário</label>
+                <div class="col-sm-10">
+                  <select class="form-control" placeholder="Selecione o tipo de usuário." id="tipousuario">
+                    <option selected="">Selecione o tipo de usuário</option>
+                    <option>Aluno</option>
+                    <option>Professor</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="senha" placeholder="Password">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="button" class="btn btn-default" onclick="loadXMLDoc()">Enviar</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      </div>
+    </div>
   </div>
   <!-- Fim Container Page Content -->
-
-  <!-- Container Footer -->
-  <div class="container">
-    <hr>
-    <footer>
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright &copy; by Equipe Engesoft 2016 - CRUD-DIW</p>
-        </div>
-      </div>
-    </footer>
-  </div>
-  <!-- Fim container Footer -->
-
 </body>
 </html>

@@ -6,10 +6,11 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    text-align: center;
 }
 
 .thumbnail img {
-    width: 100%;
+    width: 95%;
 }
 
 .ratings {
