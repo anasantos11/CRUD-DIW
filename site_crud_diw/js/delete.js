@@ -17,11 +17,3 @@
 			xmlhttp.send();
 		}
 		}
-
-		$(function() {
-	    $('#openModal').click(function() {
-	       $('#myModal').modal('show');
-	    });
-	  });
-
-		

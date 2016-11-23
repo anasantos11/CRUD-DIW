@@ -26,6 +26,7 @@
     <script src="js/delete.js"></script>
     <script src="js/list.js"></script>
     <script src="js/alterar.js"></script>
+    <script src="js/alterar_dados.js"></script>
   </head>
 <body>
   <!-- Navigation -->
@@ -68,14 +69,17 @@
                 </thead>
                 <tbody>
                   <tr >
-                    <td> <input class="form-control input-sm" type="number" name="id" value=""></td>
-                    <td > <input class="form-control input-sm" type="number" name="matricula" value=""></td>
-                    <td > <input class="form-control input-sm" type="text" name="nome" value=""></td>
-                    <td > <select class="form-control input-sm" name="tipousuario">
-                          <option value="">Aluno</option>   <option value="">Professor</option> </select> </td>
-                    <td > <input class="form-control input-sm" type="email" name="email" value=""></td>
-                    <td > <input class="form-control input-sm" type="password" name="senha" value=""></td>
-                    <td > <input class="form-control input-sm" type="date" name="data" value=""></td>
+                    <td> <input class="form-control input-sm" type="number" placeholder="ID" id="id"  ></td>
+                    <td > <input class="form-control input-sm" type="number" placeholder="Matrícula" id="matricula"  ></td>
+                    <td > <input class="form-control input-sm" type="text"  placeholder="Nome" id="nome"> </td>
+                    <td > <select class="form-control input-sm" placeholder="Selecione o tipo de usuário." id="tipousuario">
+                      <option selected="">Selecione o tipo de usuário</option>
+                      <option>Aluno</option>
+                      <option>Professor</option>
+                      </select>            </td>
+                    <td > <input class="form-control input-sm" type="email" placeholder="E-mail" id="email" ]></td>
+                    <td > <input class="form-control input-sm" type="password" placeholder="Senha" id="senha"></td>
+                    <td > <input class="form-control input-sm" type="date" id="data" ></td>
                   </tr>
 
                 </tbody>
@@ -85,7 +89,7 @@
           </div>
 
         </div>
-        <button class="btn btn-primary btn-lg "type="button" name="button" onclick="alert('Dados alterados com sucesso.')"> Alterar dados</button>
+        <button class="btn btn-primary btn-lg "type="button" name="button" onclick="alterarDados()"> Alterar dados</button>
       </div>
 
     </div>

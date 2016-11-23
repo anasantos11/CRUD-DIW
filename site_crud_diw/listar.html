@@ -26,6 +26,7 @@
     <script src="js/delete.js"></script>
     <script src="js/list.js"></script>
     <script src="js/alterar.js"></script>
+    <script src="js/alterar_dados.js"></script>
   </head>
 <body>
   <!-- Navigation -->
@@ -44,13 +45,13 @@
       <!-- DIV CONTAINER PARA MENU COM AS OPÇÕES -->
       <div class="col-md-12">
         <div class="list-group">
-          <a href="listar.html" onLoad="return ExecutaAjax();" class="list-group-item text-center active col-md-6">Listar dados</a>
+          <a href="listar.html" onLoad="return ExecutaAjax();" class="list-group-item text-center active col-md-6" id="botao_ativado">Listar dados</a>
           <a href="inserir.html" class="list-group-item text-center col-md-6">Inserir dados</a>
         </div>
       </div>
       <!-- DIV CONTAINER CORPO DA PÁGINA DA OPÇÃO SELECIONADA  -->
       <div class="col-md-12">
-        <h4 class="lead text-center"> <br> Tabela com os usuários cadastrados até o presente momento: </h4>
+        <h4 class="lead text-center" id="texto"> <br> Tabela com os usuários cadastrados até o presente momento: </h4>
         <div class="thumbnail">
           <div class="caption-full">
 
@@ -62,25 +63,6 @@
     </div>
   </div>
   <!-- Fim Container Page Content -->
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Exclusão de cadastro</h4>
-        </div>
-      <div class="modal-body">
-        <p>Tem certeza que deseja excluir? </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Sim</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
-      </div>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
