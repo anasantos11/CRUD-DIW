@@ -1,11 +1,14 @@
-function Insert() {
-	if (confirm ("Tem certeza que deseja inserir os dados?") ){
-	var matricula = document.getElementById('matricula').value;
-	var nome = document.getElementById('nome').value;
-	var tipousuario = document.getElementById('tipousuario').value;
-	var email = document.getElementById('email').value;
-	var senha = document.getElementById('senha').value;
-	var data = document.getElementById('data').value;
+function Alterar(x) {
+	var teste = x;
+	console.log(teste);
+	if (confirm ("Tem certeza que deseja alterar os dados?") ){
+		var myWindow = window.open("", "myWindow", "width=200,height=100");
+    myWindow.document.write("<p>This is 'myWindow'</p>");
+    myWindow.opener.document.write("<p>This is the source window!</p>");
+		}
+
+}
+/*
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
@@ -19,8 +22,8 @@ function Insert() {
 
 		}
 	}
-  xmlhttp.open("POST", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario", true);
+  xmlhttp.open("PUT", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario/"+x, true);
 	xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xmlhttp.send('_data={"matricula": "'+ matricula +'", "nome": "'+nome+'", "tipo": "'+tipousuario+'", "email": "'+
 	email+'",  "senha":"'+senha+'", "data": "'+ data +'"}');
-}
+} */

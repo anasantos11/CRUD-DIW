@@ -44,43 +44,53 @@
       <!-- DIV CONTAINER PARA MENU COM AS OPÇÕES -->
       <div class="col-md-12">
         <div class="list-group">
-          <a href="listar.html" onLoad="return ExecutaAjax();" class="list-group-item text-center active col-md-6">Listar dados</a>
+          <a href="listar.html" onLoad="return ExecutaAjax();" class="list-group-item text-center col-md-6">Listar dados</a>
           <a href="inserir.html" class="list-group-item text-center col-md-6">Inserir dados</a>
         </div>
       </div>
       <!-- DIV CONTAINER CORPO DA PÁGINA DA OPÇÃO SELECIONADA  -->
       <div class="col-md-12">
-        <h4 class="lead text-center"> <br> Tabela com os usuários cadastrados até o presente momento: </h4>
+        <h4 class="lead text-center"> <br> Preencha os campos abaixo e clique em enviar para alterar os dados da tabela:   </h4>
         <div class="thumbnail">
           <div class="caption-full">
+            <div class='table-responsive'>
+              <table class='table table-hover'>
+                <thead>
+                  <tr>
+                    <th class='text-center'>ID</th>
+                    <th class='text-center'>Matrícula</th>
+                    <th class='text-center'>Nome</th>
+                    <th class='text-center'>Tipo de usuário</th>
+                    <th class='text-center'>E-mail</th>
+                    <th class='text-center'>Senha</th>
+                    <th class='text-center'>Data de nascimento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td> <input class="form-control input-sm" type="number" name="id" value=""></td>
+                    <td > <input class="form-control input-sm" type="number" name="matricula" value=""></td>
+                    <td > <input class="form-control input-sm" type="text" name="nome" value=""></td>
+                    <td > <select class="form-control input-sm" name="tipousuario">
+                          <option value="">Aluno</option>   <option value="">Professor</option> </select> </td>
+                    <td > <input class="form-control input-sm" type="email" name="email" value=""></td>
+                    <td > <input class="form-control input-sm" type="password" name="senha" value=""></td>
+                    <td > <input class="form-control input-sm" type="date" name="data" value=""></td>
+                  </tr>
 
-            <p id='tabela'></p>
+                </tbody>
+              </table>
+            </div>
+
           </div>
+
         </div>
+        <button class="btn btn-primary btn-lg "type="button" name="button" onclick="alert('Dados alterados com sucesso.')"> Alterar dados</button>
       </div>
 
     </div>
   </div>
   <!-- Fim Container Page Content -->
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Exclusão de cadastro</h4>
-        </div>
-      <div class="modal-body">
-        <p>Tem certeza que deseja excluir? </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Sim</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
-      </div>
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>

@@ -1,5 +1,4 @@
 //Executar Ajax para demonstrar tabela
-// Mostrar os departamentos em forma de tabela
   var xmlhttp = new XMLHttpRequest();
   function processarRequisicao() { //Função para processar a requisição
     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
@@ -8,19 +7,26 @@
       var num = a.restify.rows.length;
       for (j = 0; j < num; j++) {
         var id = a.restify.rows[j].values.id.value;
-        str =  str + "<thead> <tr>" + "<td>" + id + "</td>" +
-             "<td>" + a.restify.rows[j].values.matricula.value + "</td>" +
-             "<td>" + a.restify.rows[j].values.nome.value + "</td>"+
-             "<td>" + a.restify.rows[j].values.tipo.value + "</td>" +
-             "<td>" + a.restify.rows[j].values.email.value + "</td>"+
-             "<td>" + a.restify.rows[j].values.senha.value + "</td>" +
-             "<td>" + "<button type='button' class='btn btn-success'>Alterar</button>" +
-                      "<button type='button' class='btn btn-danger delete' onclick='deleteXMLDoc("+id+")' id='"+id+"'>Excluir</button>" +
-                      "</td>" + "</tr> </thead>";
+        var matricula = a.restify.rows[j].values.matricula.value;
+        var nome = a.restify.rows[j].values.nome.value;
+        var tipo = a.restify.rows[j].values.tipo.value;
+        var email = a.restify.rows[j].values.email.value;
+        var senha = a.restify.rows[j].values.senha.value;
+        var data = a.restify.rows[j].values.data.value;
+        str =  str + "<tbody> <tr>" + "<td>" + id + "</td>" +
+             "<td>" + matricula + "</td>" +  "<td>" + nome + "</td>"+
+             "<td>" + tipo + "</td>" + "<td>" + email + "</td>"+
+             "<td>" + senha + "</td>" + "<td>" + data + "</td>" +
+             "<td>" + "<button type='button' class='btn btn-success' onclick='Alterar("+id+")'>Alterar</button>" +
+                "<button type='button' class='btn btn-danger' onclick='deleteXMLDoc("+id+")'>Excluir</button>" +
+                "</td>" + "</tr> </tbody>";
+
+
       }
-     document.getElementById("tabela").innerHTML = "<table class='table table-hover'> <thead> <tr>" +
-     "<th class='text-center'>ID</th>" + "<th class='text-center'>Matrícula</th>" +"<th>Nome</th>" +"<th class='text-center'>Tipo de usuário</th>" +
-     "<th class='text-center'>E-mail</th>" + "<th class='text-center'>Senha</th>" + "<th class='text-center'>Ações</th>" + str + "</tr> </thead> </table>" ;
+     document.getElementById("tabela").innerHTML = "<div class='table-responsive'>" + "<table class='table table-hover'> <thead> <tr>" +
+     "<th class='text-center'>ID</th>" + "<th class='text-center'>Matrícula</th>" +"<th class='text-center'>Nome</th>" +"<th class='text-center'>Tipo de usuário</th>" +
+     "<th class='text-center'>E-mail</th>" + "<th class='text-center'>Senha</th>" + "<th class='text-center'>Data</th>" +
+     "<th class='text-center'>Ações</th>" + str + "</tr> </thead> </table> </div>" ;
        }
   }
   window.onload = function ExecutaAjax() { //Função para Executar o Ajax

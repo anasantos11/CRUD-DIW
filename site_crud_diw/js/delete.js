@@ -1,5 +1,6 @@
 
 		function deleteXMLDoc(x) {
+			if (confirm ("Tem certeza que deseja excluir?") ){
 			var xmlhttp = new XMLHttpRequest();
 			xmlhttp.onreadystatechange=function() {
 				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
@@ -12,8 +13,15 @@
 					window.location.reload();
 				}
 			}
-
-
       xmlhttp.open("DELETE", "http://www.smartsoft.com.br/webservice/restifydb/Employees/diw_cadastro_usuario/"+x, true);
 			xmlhttp.send();
 		}
+		}
+
+		$(function() {
+	    $('#openModal').click(function() {
+	       $('#myModal').modal('show');
+	    });
+	  });
+
+		
