@@ -6,6 +6,7 @@ function Insert() {
 	var email = document.getElementById('email').value;
 	var senha = document.getElementById('senha').value;
 	var data = document.getElementById('data').value;
+	console.log(data);
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {

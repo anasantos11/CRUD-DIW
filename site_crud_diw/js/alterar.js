@@ -1,20 +1,16 @@
 function Alterar(id,matricula,nome,tipo,email,senha,data) {
 
 
-	//  FORMATANDO DATA
-	var datacorrigida = new Date(data);
-	var dia = datacorrigida.getDate();
-	var mes =  datacorrigida.getMonth()+1;
-	var ano =  datacorrigida.getFullYear();
-	if (dia < 10){
-		dia = "0" + dia;
-	}
-	if (mes < 10){
-		mes = "0" + mes;
-	}
-	datacorrigida = ano + "-" + mes + "-" + dia;
+//  FORMATANDO DATA
+
+var datas = data.toLocaleString().split("/"); // separa dia, mês e ano da string pelo caracter /.
+var dia = datas[0];
+var mes = datas[1];
+var ano = datas[2];
+var datacorrigida = ano+"-"+mes+"-"+dia;
  //  FIM FORMATANDO DATA
-	console.log(id,matricula,nome,tipo,email,senha,data, datacorrigida, dia, mes, ano);
+
+
 
 	if (confirm ("Tem certeza que deseja alterar os dados?") ){
 		document.getElementById("texto").innerHTML = "<br> <h4 class='lead text-center'> Preencha os campos abaixo e clique em enviar para alterar os dados da tabela: </h4>"
@@ -49,7 +45,7 @@ function Alterar(id,matricula,nome,tipo,email,senha,data) {
 							"</tbody>" +
 					"</table>" +
 			"</div>" +
-			'<button class="btn btn-primary btn-lg "type="button" name="button" onclick="alterarDados()"> Alterar dados</button>'
+			'<button class="btn btn-primary btn-lg "type="button" name="button" onclick="Validacao_Formulario_alterar();"> Alterar dados</button>'
 		}
 
 

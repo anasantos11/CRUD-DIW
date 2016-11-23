@@ -13,24 +13,22 @@
         var email = a.restify.rows[j].values.email.value;
         var senha = a.restify.rows[j].values.senha.value;
         var data = a.restify.rows[j].values.data.value;
+
         // FORMATANDO DATA
-        var datacorrigida = new Date(data);
-        var dia = datacorrigida.getDate();
-        var mes =  datacorrigida.getMonth()+1;
-        var ano =  datacorrigida.getFullYear();
-        if (dia < 10){
-          dia = "0" + dia;
-        }
-        if (mes < 10){
-          mes = "0" + mes;
-        }
-        datacorrigida = dia + "/" + mes + "/" + ano;
-       //  FIM FORMATANDO DATA
+        var data_banco1 = data; // armazena a data do banco de dados na variável
+        var data_banco2 = data_banco1.toLocaleString().split(" "); // separa a data e hora da string pelo caracter espaço.
+        var data1 = data_banco2[0]; //armazena somente a parte da data da string
+        var datas = data1.toLocaleString().split("-"); // separa dia, mês e ano da string pelo caracter hífen.
+        var dia = datas[2];
+        var mes = datas[1];
+        var ano = datas[0];
+        var data_correta = dia+"/"+mes+"/"+ano;
+        //FIM FORMATANDO DATA
         str =  str + "<tbody> <tr>" + "<td>" + id + "</td>" +
              "<td>" + matricula + "</td>" +  "<td>" + nome+ "</td>"+
              "<td>" + tipo + "</td>" + "<td>" + email + "</td>"+
-             "<td>" + senha + "</td>" + "<td>" + datacorrigida + "</td>" +
-             "<td>" +   '<button type="button" class="btn btn-success" onclick="Alterar('+id+','+matricula+', \'' + nome + '\', \'' + tipo + '\', \'' + email + '\',\'' + senha + '\',\'' + data + '\' );">Alterar</button>' +
+             "<td>" + senha + "</td>" + "<td>" + data_correta + "</td>" +
+             "<td>" +   '<button type="button" class="btn btn-success" onclick="Alterar('+id+','+matricula+', \'' + nome + '\', \'' + tipo + '\', \'' + email + '\',\'' + senha + '\',\'' + data_correta + '\' );">Alterar</button>' +
                 "<button type='button' class='btn btn-danger' onclick='deleteXMLDoc("+id+")'>Excluir</button>" +
                 "</td>" + "</tr> </tbody>";
       }
