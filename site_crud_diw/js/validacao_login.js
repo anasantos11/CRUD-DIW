@@ -10,12 +10,12 @@ function processarRequisicao() { //Função para processar a requisição
       var id = a.restify.rows[j].values.id.value;
       var login = a.restify.rows[j].values.login.value;
       var senha = a.restify.rows[j].values.senha.value;
-      if (id=1){
+      if (id==1){
         login_validar = login;
         senha_validar = senha;
       }
-
-    }
+  }
+    console.log(login_validar,senha_validar);
     Validar_Login(login_validar,senha_validar);
   }
 
